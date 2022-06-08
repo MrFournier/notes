@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# create a new file in the notes repo
+fileName=$(git rev-parse --abbrev-ref HEAD).md
+
+echo "Updating Notes Repo"
+cd ../notes/Tasks
+
+if ! test -f "$fileName" && [[ $fileName != *"dev"* ]]; then
+    echo '# Summary
+
+***
+- [ ]'> $fileName
+else 
+    echo "$fileName already exist."
+fi
